@@ -4,12 +4,13 @@ class BotLog(object):
 
 	def __init__(self):
 
-		stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M")
+		stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 		self.output = open("../web/bot/" + stamp + "-bot.log", 'w')
 
 	def log(self, message):
 
 		self.output.write(message + "\n")
+		self.output.flush()
 		print(message)
 
 	def close(self):
@@ -18,7 +19,7 @@ class BotLog(object):
 
 	def drawGraph(self, graphPoints, balancePoints, MACDPoints, RSIPoints, name, mode):
 
-		self.outputGraph = open(os.path.expanduser("../web/bot/graph/" + name + "-" + mode + "-Graph.html"), 'w')
+		self.outputGraph = open(os.path.expanduser("../web/bot/" + name + "-" + mode + "-Graph.html"), 'w')
 
 		self.outputGraph.truncate()
 		self.outputGraph.write("""<html>

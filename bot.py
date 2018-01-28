@@ -61,7 +61,7 @@ def main(argv):
         for exchange in exchanges:
             charts.append(BotChart(exchange, pair, period, backTest, output))
             for mode in modes:
-                strategies.append(BotStrategy(exchange + ' | Target - StopLoss + ' + str(target) + ' - ' + str(stoploss) + ' | ' + pair + '', mode, pair, 1, 5000, 5, int(5000 - 1), stoploss, target, backTest, output))
+                strategies.append(BotStrategy(exchange + "-" + pair, mode, pair, 1, 5000, 0, int(5000 - 1), stoploss, target, backTest, output))
                         # Parameters: max trades, initial fiat, initial holding, trade amount, stop loss, target
 
     if (backTest == "backtest"):
@@ -71,7 +71,7 @@ def main(argv):
                 for candlestick in chart.getPoints():
                     strategy.tick(candlestick)
 
-                #strategy.showPositions()
+                strategy.showPositions()
                 strategy.showProfit()
                 strategy.drawGraph()
                 output.log("\n--- %s seconds ---" % (time.time() - start_time))

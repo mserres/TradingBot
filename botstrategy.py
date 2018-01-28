@@ -210,12 +210,12 @@ class BotStrategy(object):
 		tradesLossesNumber = sum(1 for i in self.trades if i.profit < 0 and i.status == "CLOSED")
 		tradesLossesAmount = sum(i.profit for i in self.trades if i.profit < 0 and i.status == "CLOSED")
 
-		self.output.log("\nSummary for " + self.name + " with " + self.mode + " Start with: " + str(self.startUnit) + " unit(s) and " + str(self.startUSD) + " USD")
+		self.output.log("\nSummary for " + self.name + ", Target / StopLoss " + str(self.targetPrice) + " / " + str(self.stopLoss) + ",  with " + self.mode + " Start with: " + str(self.startUnit) + " unit(s) and " + str(self.startUSD) + " USD")
 		self.output.log("Hold: End valuation: " + str(self.balanceNoTrade) + " Units: " + str(self.startUnit) + " USD: " + str(self.startUSD) + " Price: " + str(self.currentPrice))
 		self.output.log("Trade: End valuation: " + str(self.balance) + " Units: " + str(self.holdingsUnits) + " USD: " + str(self.holdingsUSD) + ". Price: " + str(self.currentPrice))
 
 		if tradesClosed > 0:
-			self.output.log("Profit inc Fees: " + str(self.profit) + ", Fees: " + str(self.fees) + ", " + str(len(self.trades)) + " Trades with " + str(tradesOpened) + " still open")
+			self.output.log("Profit inc Fees: " + str(self.profit) + ", Fees: " + str(self.fees) + ", " + str(len(self.trades)) + " Trades with " + str(tradesOpened) + " still open\n")
 			#self.output.log("Trades > 0: Number: " + str(tradesProfitableNumber) + ", Total: " + str(tradesProfitableAmount))
 			#self.output.log("Trades < 0: Number: " + str(tradesLossesNumber) + ", Total: " + str(tradesLossesAmount))
 
