@@ -161,9 +161,9 @@ class BotStrategy(object):
 
 			elif trade.type in ["MACD3"] and self.MACDDiff[-2] > 0 and self.MACDDiff[-1] < 0 and self.currentPrice > trade.targetPrice:
 
-				trade.close(self.date, self.currentPrice, "MACD2")
+				trade.close(self.date, self.currentPrice, "MACD3")
 				self.updateBalance(-trade.quantity, self.currentPrice)
-				self.action.append('CLOSE MACD2=' + str(self.currentPrice))
+				self.action.append('CLOSE MACD3=' + str(self.currentPrice))
 
 			elif trade.type in ["BBAND"] and self.prices[-1] < self.upperBBand[-1] and self.prices[-2] > self.upperBBand[-2] and self.currentPrice > trade.targetPrice:
 				

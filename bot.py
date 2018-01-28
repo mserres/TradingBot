@@ -32,7 +32,7 @@ def main(argv):
                 sys.exit(2)
         elif opt in ("-p", "--period"):
             if (int(arg) in [300, 900, 1800, 7200, 14400, 86400]):
-                period = arg
+                period = int(arg)
             else:
                 print("Requires periods to be 300, 900, 1800, 7200, 14400, or 86400 second increments")
                 sys.exit(2)
@@ -48,14 +48,14 @@ def main(argv):
     #modes = ["RSI"]
     #modes = ["BBAND"]
     #modes = ["BBAND", "MACD2", "ALL"]
-    #modes = ["ALL"]
-    modes = ["RSI", "BBAND", "MACD2", "MACD", "DROP", "ALL"]
+    modes = ["MACD2"]
+    #modes = ["RSI", "BBAND", "MACD2", "MACD", "DROP", "ALL"]
 
     charts = []
     strategies = []
 
     target = 0.04
-    stoploss = 0.1
+    stoploss = 0.18
 
     for pair in pairs:
         for exchange in exchanges:
@@ -64,7 +64,7 @@ def main(argv):
                 strategies.append(BotStrategy(exchange + ' | Target - StopLoss + ' + str(target) + ' - ' + str(stoploss) + ' | ' + pair + '', mode, pair, 1, 5000, 5, int(5000 - 1), stoploss, target, backTest, output))
                         # Parameters: max trades, initial fiat, initial holding, trade amount, stop loss, target
 
-    if (backTest):
+    if (backTest == "backtest"):
         for i, chart in enumerate(charts):
             for j, mode in enumerate(modes):
                 strategy = strategies[len(modes) * i + j]
@@ -77,7 +77,7 @@ def main(argv):
                 output.log("\n--- %s seconds ---" % (time.time() - start_time))
     else:
         candlesticks = []
-        developingCandlestick = BotCandlestick(int(time.time()), period)
+        developingCandlestick = BotCandlestick(output, int(time.time()), period)
 
         for i, chart in enumerate(charts):
             for j, mode in enumerate(modes):
