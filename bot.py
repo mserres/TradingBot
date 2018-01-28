@@ -3,31 +3,65 @@ import sys, getopt, time, urllib
 from botchart import BotChart
 from botstrategy import BotStrategy
 from botcandlestick import BotCandlestick
-
+from botlog import BotLog
+import configparser
 
 def main(argv):
 
+    pairs = []
+
+    try:
+        opts, args = getopt.getopt(argv, "hm:p:c:", ["mode=", "period=", "currency="])
+    except getopt.GetoptError:
+        print("bot.py -m <backtest | paper | live> -p <period length in sec> -c <currency pair>")
+        sys.exit(2)
+
+    for opt, arg in opts:
+        if opt == '-h':
+            print("bot.py -m <backtest | paper | live> -p <period length in sec> -c <currency pair>")
+            sys.exit()
+        elif opt in ("-m", "--mode"):
+            if (arg == "backtest"):
+                backTest = arg
+            elif (arg == "paper"):
+                backTest = arg
+            elif (arg == "live"):
+                backTest = arg
+            else:
+                print("Requires mode to be 'backtest', 'paper' or 'live'")
+                sys.exit(2)
+        elif opt in ("-p", "--period"):
+            if (int(arg) in [300, 900, 1800, 7200, 14400, 86400]):
+                period = arg
+            else:
+                print("Requires periods to be 300, 900, 1800, 7200, 14400, or 86400 second increments")
+                sys.exit(2)
+        elif opt in ("-c", "--currency"):
+            pairs.append(arg)
+
     start_time = time.time()
 
-    backTest = True # Use True for backtesting, False for live paper trade
-    period = 14400 # Use 1800 for 30 min tick, 300 for 5 min tick
+    output = BotLog()
 
     exchanges = ["poloniex"]
     #pairs = ["USDT_BTC",  "USDT_ETH", "USDT_LTC", "USDT_ZEC"]
-    pairs = ["USDT_BTC"]
     #modes = ["RSI"]
     #modes = ["BBAND"]
-    #modes = ["MACD"]
-    modes = ["RSI", "BBAND", "MACD", "DROP"]
+    #modes = ["BBAND", "MACD2", "ALL"]
+    #modes = ["ALL"]
+    modes = ["RSI", "BBAND", "MACD2", "MACD", "DROP", "ALL"]
 
     charts = []
     strategies = []
 
+    target = 0.04
+    stoploss = 0.1
+
     for pair in pairs:
         for exchange in exchanges:
-            charts.append(BotChart(exchange, pair, period, backTest))
+            charts.append(BotChart(exchange, pair, period, backTest, output))
             for mode in modes:
-                strategies.append(BotStrategy(exchange + ' | Target +' + str(20) + '% | ' + pair + '', mode, pair, 1, 5000, 0, 4000, 0.6, .6, backTest))
+                strategies.append(BotStrategy(exchange + ' | Target - StopLoss + ' + str(target) + ' - ' + str(stoploss) + ' | ' + pair + '', mode, pair, 1, 5000, 5, int(5000 - 1), stoploss, target, backTest, output))
                         # Parameters: max trades, initial fiat, initial holding, trade amount, stop loss, target
 
     if (backTest):
@@ -40,7 +74,7 @@ def main(argv):
                 #strategy.showPositions()
                 strategy.showProfit()
                 strategy.drawGraph()
-                print("\n--- %s seconds ---" % (time.time() - start_time))
+                output.log("\n--- %s seconds ---" % (time.time() - start_time))
     else:
         candlesticks = []
         developingCandlestick = BotCandlestick(int(time.time()), period)
@@ -65,6 +99,8 @@ def main(argv):
                         strategy.drawGraph()
 
                     time.sleep(int(period/10))
+
+    output.close()
 
 if __name__ == "__main__":
     main(sys.argv[1:])

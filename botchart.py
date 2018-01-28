@@ -5,7 +5,7 @@ from botcandlestick import BotCandlestick
 
 class BotChart(object):
 
-	def __init__(self, exchange, pair, period, backtest):
+	def __init__(self, exchange, pair, period, backtest, output):
 
 		self.exchange = exchange
 		self.pair = pair
@@ -23,16 +23,16 @@ class BotChart(object):
 		if (self.exchange == "poloniex"):
 			self.conn = poloniex('key goes here', 'Secret goes here')
 
-			if backtest:
+			if backtest == "backtest":
 				data = self.conn.api_query("returnChartData", {"currencyPair": self.pair, "start": self.startTime, "end": self.endTime, "period": self.period})
 				#data = json.loads(open("./data/btc-usd-data.json", "r").readline())
 
 				for d in data:
 					if (d['open'] and d['close'] and d['high'] and d['low']):
-						self.data.append(BotCandlestick(d['date'], self.period, d['open'], d['close'], d['high'], d['low'], d['weightedAverage']))
+						self.data.append(BotCandlestick(output, d['date'], self.period, d['open'], d['close'], d['high'], d['low'], d['weightedAverage']))
 
 		if (self.exchange == "bittrex"):
-			if backtest:
+			if backtest == "backtest":
 				url = "https://bittrex.com/Api/v2.0/pub/market/GetTicks?marketName=" + self.pair + "&tickInterval=" + self.period + "&_=" + str(self.startTime)
 				response = requests.get(url)
 				rawdata = response.json()

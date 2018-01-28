@@ -6,9 +6,9 @@ from bottrade import BotTrade
 
 class BotStrategy(object):
 
-	def __init__(self, name, mode, pair, numTrades, startUSD, startUnit, tradeAmount, stopLoss, targetPrice, backtest):
+	def __init__(self, name, mode, pair, numTrades, startUSD, startUnit, tradeAmount, stopLoss, targetPrice, backtest, output):
 
-		self.output = BotLog()
+		self.output = output
 		self.name = name
 		self.mode = mode
 		self.pair = pair
@@ -77,7 +77,7 @@ class BotStrategy(object):
 
 		self.evaluatePositions()
 
-		if self.backtest:
+		if self.backtest == "backtest":
 			tickdate = candlestick.date
 			self.date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(tickdate))
 		else:
@@ -102,29 +102,41 @@ class BotStrategy(object):
 
 		if len(openTrades) < self.numTrades and self.holdingsUSD > self.tradeAmount:
 
-			if self.mode in ["MACD", "ALL"] and self.MACDDiff[-1] < self.MACDSignal[-1] and self.MACDDiff[-2] > self.MACDSignal[-2] and self.prices[-1] < .9 * max(self.prices[:-30]):
+			if self.mode in ["MACD", "ALL"] and self.MACDDiff[-1] < self.MACDSignal[-1] and self.MACDDiff[-2] > self.MACDSignal[-2]:
 
-				self.trades.append(BotTrade(self.date, "MACD", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest))
+				self.trades.append(BotTrade(self.date, "MACD", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
 				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
 				self.action.append('Open MACD=, Amount=' + str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
 
-			if self.mode in ["BBAND", "ALL"] and self.prices[-1] > self.lowerBBand[-1] and self.prices[-2] < self.lowerBBand[-2]:
+			elif self.mode in ["MACD2", "ALL"] and self.MACDDiff[-1] < 500 and ((self.MACDDiff[-1] > 0 and self.MACDDiff[-2] < 0) or (self.MACDDiff[-1] < self.MACDSignal[-1] and self.MACDDiff[-2] > self.MACDSignal[-2])):
 
-				self.trades.append(BotTrade(self.date, "BBAND", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest))
+				self.trades.append(BotTrade(self.date, "MACD2", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
+				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
+				self.action.append('Open MACD2=, Amount=' + str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
+
+			elif self.mode in ["MACD3", "ALL"] and self.MACDDiff[-1] > 0 and self.MACDDiff[-2] < 0:
+
+				self.trades.append(BotTrade(self.date, "MACD3", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
+				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
+				self.action.append('Open MACD3=, Amount=' + str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
+
+			elif self.mode in ["BBAND", "ALL"] and self.prices[-1] > self.lowerBBand[-1] and self.prices[-2] < self.lowerBBand[-2]:
+
+				self.trades.append(BotTrade(self.date, "BBAND", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
 				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
 				self.action.append('Open BBAND, Amount='+ str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
 
-			if self.mode in ["RSI", "ALL"] and self.rsi[-1] < 30 and self.rsi[-2] > 30:
+			elif self.mode in ["RSI", "ALL"] and self.rsi[-1] < 30 and self.rsi[-2] > 30:
 
-				self.trades.append(BotTrade(self.date, "RSI", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest))
+				self.trades.append(BotTrade(self.date, "RSI", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
 				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
 				self.action.append('Open RSI, Amount='+ str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
 
-			if len(self.prices) > 50:
+			elif len(self.prices) > 12:
 
-				if self.mode in ["DROP", "ALL"] and self.prices[-1] < self.prices[-49] *.95:
+				if self.mode in ["DROP", "ALL"] and self.prices[-1] < self.prices[-6] *.95 and self.prices[-1] > self.prices[-2]:
 
-					self.trades.append(BotTrade(self.date, "DROP", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest))
+					self.trades.append(BotTrade(self.date, "DROP", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
 					self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
 					self.action.append('Open DROP, Amount='+ str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
 
@@ -135,29 +147,44 @@ class BotStrategy(object):
 				self.updateBalance(-trade.quantity, self.currentPrice)
 				self.action.append('Close STOPLOSS=' + str(self.currentPrice))
 
-			if self.mode in ["MACD", "ALL"] and self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2] and self.MACDDiff[-1] < 0 and self.currentPrice > trade.targetPrice:
+			if trade.type in ["MACD"] and self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2] and self.currentPrice > trade.targetPrice:
 				
 				trade.close(self.date, self.currentPrice, "MACD")
 				self.updateBalance(-trade.quantity, self.currentPrice)
 				self.action.append('CLOSE MACD=' + str(self.currentPrice))
 
-			elif self.mode in ["BBAND", "ALL"] and self.prices[-1] < self.upperBBand[-1] and self.prices[-2] > self.upperBBand[-2] and self.currentPrice > trade.targetPrice:
+			elif trade.type in ["MACD2"] and ((self.MACDDiff[-2] > 0 and self.MACDDiff[-1] < 0) or (self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2])) and self.currentPrice > trade.targetPrice:
+
+				trade.close(self.date, self.currentPrice, "MACD2")
+				self.updateBalance(-trade.quantity, self.currentPrice)
+				self.action.append('CLOSE MACD2=' + str(self.currentPrice))
+
+			elif trade.type in ["MACD3"] and self.MACDDiff[-2] > 0 and self.MACDDiff[-1] < 0 and self.currentPrice > trade.targetPrice:
+
+				trade.close(self.date, self.currentPrice, "MACD2")
+				self.updateBalance(-trade.quantity, self.currentPrice)
+				self.action.append('CLOSE MACD2=' + str(self.currentPrice))
+
+			elif trade.type in ["BBAND"] and self.prices[-1] < self.upperBBand[-1] and self.prices[-2] > self.upperBBand[-2] and self.currentPrice > trade.targetPrice:
 				
 				trade.close(self.date, self.currentPrice, "BBAND")
 				self.updateBalance(-trade.quantity, self.currentPrice)
-				self.action.append('CLOSE BBAND')
+				self.action.append('CLOSE BBAND=' + str(self.currentPrice))
 
-			elif self.mode in ["RSI", "ALL"] and self.rsi[-1] > 70 and self.rsi[-2] < 70 and self.currentPrice > trade.targetPrice:
+			elif trade.type in ["RSI"] and self.rsi[-1] > 65 and self.rsi[-2] < 65 and self.currentPrice > trade.targetPrice:
 				
 				trade.close(self.date, self.currentPrice, "RSI")
 				self.updateBalance(-trade.quantity, self.currentPrice)
-				self.action.append('CLOSE RSI')
+				self.action.append('CLOSE RSI=' + str(self.currentPrice))
 
-			elif self.currentPrice > trade.targetPrice:
+			"""elif trade.type in ["DROP"] and self.currentPrice > trade.targetPrice:
 
-				trade.close(self.date, self.currentPrice, "TARGET")
+				trade.close(self.date, self.currentPrice, "DROP")
 				self.updateBalance(-trade.quantity, self.currentPrice)
-				self.action.append('CLOSE TARGET')
+				self.action.append('CLOSE DROP=' + str(self.currentPrice))"""
+
+			self.tradeAmount = int((self.holdingsUSD - 1) / self.numTrades)
+			#self.output.log(str(self.tradeAmount))
 
 	def showPositions(self):
 

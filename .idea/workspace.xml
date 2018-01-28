@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c6ad5d3-4eba-48aa-b1f3-a64c82431d90" name="Default" comment="" />
+    <list default="true" id="4c6ad5d3-4eba-48aa-b1f3-a64c82431d90" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/bot.py" afterPath="$PROJECT_DIR$/bot.py" />
+      <change beforePath="$PROJECT_DIR$/botcandlestick.py" afterPath="$PROJECT_DIR$/botcandlestick.py" />
+      <change beforePath="$PROJECT_DIR$/botchart.py" afterPath="$PROJECT_DIR$/botchart.py" />
+      <change beforePath="$PROJECT_DIR$/botlog.py" afterPath="$PROJECT_DIR$/botlog.py" />
+      <change beforePath="$PROJECT_DIR$/botstrategy.py" afterPath="$PROJECT_DIR$/botstrategy.py" />
+      <change beforePath="$PROJECT_DIR$/bottrade.py" afterPath="$PROJECT_DIR$/bottrade.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="bot.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bot.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="65">
+              <caret line="57" column="18" lean-forward="false" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -26,8 +34,8 @@
       <file leaf-file-name="botchart.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/botchart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+            <state relative-caret-position="465">
+              <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -38,8 +46,8 @@
       <file leaf-file-name="botstrategy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/botstrategy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1590">
-              <caret line="110" column="12" lean-forward="false" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
+            <state relative-caret-position="230">
+              <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="17" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -47,14 +55,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bottrade.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bottrade.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bottrade.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+            <state relative-caret-position="15">
+              <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
-                <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+                <element signature="e#0#29#0" expanded="true" />
+                <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
               </folding>
             </state>
           </provider>
@@ -63,8 +71,8 @@
       <file leaf-file-name="botindicators.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/botindicators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+            <state relative-caret-position="312">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -75,8 +83,8 @@
       <file leaf-file-name="botcandlestick.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/botcandlestick.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="34" column="62" lean-forward="false" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+            <state relative-caret-position="510">
+              <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -84,24 +92,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="botlog.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/botlog.py">
+      <file leaf-file-name="config.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-              <folding>
-                <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="botportfolio.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/botportfolio.py">
+      <file leaf-file-name="botlog.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/botlog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="945">
+              <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+              <folding>
+                <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,10 +127,12 @@
     <findStrings>
       <find>print</find>
       <find>int(time.time())</find>
+      <find>back</find>
+      <find>backtest</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/data/TradingBot" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -136,19 +146,20 @@
         <option value="$PROJECT_DIR$/botportfolio.py" />
         <option value="$PROJECT_DIR$/botindicators.py" />
         <option value="$PROJECT_DIR$/poloniex.py" />
+        <option value="$PROJECT_DIR$/botlog.py" />
         <option value="$PROJECT_DIR$/botcandlestick.py" />
-        <option value="$PROJECT_DIR$/bottrade.py" />
         <option value="$PROJECT_DIR$/botchart.py" />
         <option value="$PROJECT_DIR$/botstrategy.py" />
-        <option value="$PROJECT_DIR$/botlog.py" />
+        <option value="$PROJECT_DIR$/config.ini" />
         <option value="$PROJECT_DIR$/bot.py" />
+        <option value="$PROJECT_DIR$/bottrade.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="24" />
-    <option name="y" value="23" />
-    <option name="width" value="1368" />
+    <option name="x" value="18" />
+    <option name="y" value="38" />
+    <option name="width" value="1398" />
     <option name="height" value="842" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -238,7 +249,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TradingBot" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bot.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="-m backtest -p 7200 -c USDT_BTC" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -265,7 +276,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TradingBotPoloniex" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -312,7 +323,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TradingBotPoloniex" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
@@ -348,18 +359,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="23" width="1368" height="842" extended-state="0" />
+    <frame x="18" y="38" width="1398" height="842" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15862574" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1881259" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.62084764" sideWeight="0.5144445" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.63766235" sideWeight="0.48555556" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4909091" sideWeight="0.48555556" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39803708" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39740258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -373,6 +385,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/data/TradingBot" />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <default-breakpoints>
@@ -382,47 +399,18 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
+      <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/botstrategy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="75" column="56" lean-forward="true" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/botindicators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="59" lean-forward="true" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/botlog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="187" lean-forward="true" selection-start-line="27" selection-start-column="187" selection-end-line="27" selection-end-column="187" />
-          <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bottrade.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>
@@ -459,8 +447,8 @@
         <state relative-caret-position="150">
           <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>
@@ -480,7 +468,7 @@
         <state relative-caret-position="405">
           <caret line="27" column="97" lean-forward="false" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
           <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -507,8 +495,8 @@
         <state relative-caret-position="585">
           <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="36" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>
@@ -528,7 +516,7 @@
         <state relative-caret-position="405">
           <caret line="27" column="97" lean-forward="false" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
           <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -575,8 +563,8 @@
         <state relative-caret-position="585">
           <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="36" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>
@@ -586,7 +574,7 @@
         <state relative-caret-position="405">
           <caret line="27" column="97" lean-forward="false" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
           <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -633,8 +621,8 @@
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>
@@ -654,7 +642,7 @@
         <state relative-caret-position="360">
           <caret line="24" column="125" lean-forward="false" selection-start-line="24" selection-start-column="125" selection-end-line="24" selection-end-column="125" />
           <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -681,8 +669,8 @@
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>
@@ -702,7 +690,7 @@
         <state relative-caret-position="75">
           <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -750,31 +738,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bottrade.py">
+    <entry file="file://$PROJECT_DIR$/botportfolio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1512569646814" expanded="true" signature="179:463" ph="..." />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/botstrategy.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1590">
-          <caret line="110" column="12" lean-forward="false" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
+        <state relative-caret-position="145">
+          <caret line="582" column="0" lean-forward="false" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/numpy/lib/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="1923" column="0" lean-forward="false" selection-start-line="1923" selection-start-column="0" selection-end-line="1923" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/botlog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1517041100304" expanded="true" signature="4671:4697" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/botcandlestick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="34" column="62" lean-forward="false" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+        <state relative-caret-position="510">
+          <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
@@ -783,48 +781,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/botindicators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+        <state relative-caret-position="312">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/botstrategy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/botchart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        <state relative-caret-position="465">
+          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/botportfolio.py">
+    <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/botlog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        <state relative-caret-position="65">
+          <caret line="57" column="18" lean-forward="false" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
           <folding>
-            <marker date="1516787539044" expanded="true" signature="4168:4197" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bot.py">
+    <entry file="file://$PROJECT_DIR$/config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bottrade.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1517128617996" expanded="true" signature="181:463" ph="..." />
           </folding>
         </state>
       </provider>

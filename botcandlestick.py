@@ -3,7 +3,7 @@ from botlog import BotLog
 
 class BotCandlestick(object):
 
-	def __init__(self, date, period, open=None, close=None, high=None, low=None, priceAverage=None):
+	def __init__(self, output, date, period, open=None, close=None, high=None, low=None, priceAverage=None):
 
 		self.date = date
 		self.current = None
@@ -13,10 +13,9 @@ class BotCandlestick(object):
 		self.low = low
 		self.startTime = time.time()
 		self.period = period
-		self.output = BotLog()
+		self.output = output
 		self.priceAverage = priceAverage
 		self.prices = []
-
 
 	def tick(self,price):
 
@@ -34,7 +33,7 @@ class BotCandlestick(object):
 
 		if ( time.time() >= ( self.startTime + self.period) ):
 			self.close = self.current
-			#self.priceAverage = ( self.high + self.low + self.close ) / float(3)
+			# self.priceAverage = ( self.high + self.low + self.close ) / float(3)
 			self.priceAverage = sum(self.prices) / len(self.prices)
 
 		self.output.log("Open: "+str(self.open)+" Close: "+str(self.close)+" High: "+str(self.high)+" Low: "+str(self.low)+" Current: "+str(self.current)+" Average: "+str(self.priceAverage))
