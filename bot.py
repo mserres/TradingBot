@@ -92,7 +92,7 @@ def main(argv):
                     if (developingCandlestick.isClosed()):
                         candlesticks.append(developingCandlestick)
                         strategy.tick(developingCandlestick)
-                        developingCandlestick = BotCandlestick(int(time.time()), period)
+                        developingCandlestick = BotCandlestick(output, int(time.time()), period)
 
                         strategy.showPositions()
                         strategy.showProfit()
