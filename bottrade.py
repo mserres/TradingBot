@@ -24,7 +24,7 @@ class BotTrade(object):
 			config = configparser.ConfigParser()
 			config.sections()
 			config.read('config.ini')
-			self.conn = poloniex(config['Default']['apikey'], config['Default']['apikey'])
+			self.conn = poloniex(config['Default']['apikey'], config['Default']['apisecret'])
 			self.output.log("Trade opened " + self.type)
 			orderNumber = self.conn.buy(self.pair, currentPrice*1.0005, self.quantity)
 

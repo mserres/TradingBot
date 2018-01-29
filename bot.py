@@ -4,7 +4,6 @@ from botchart import BotChart
 from botstrategy import BotStrategy
 from botcandlestick import BotCandlestick
 from botlog import BotLog
-import configparser
 
 def main(argv):
 

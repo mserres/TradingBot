@@ -36,7 +36,7 @@ class BotCandlestick(object):
 			# self.priceAverage = ( self.high + self.low + self.close ) / float(3)
 			self.priceAverage = sum(self.prices) / len(self.prices)
 
-		self.output.log("Open: "+str(self.open)+" Close: "+str(self.close)+" High: "+str(self.high)+" Low: "+str(self.low)+" Current: "+str(self.current)+" Average: "+str(self.priceAverage))
+			self.output.log("Open: "+str(self.open)+" Close: "+str(self.close)+" High: "+str(self.high)+" Low: "+str(self.low)+" Current: "+str(self.current)+" Average: "+str(self.priceAverage))
 
 	def isClosed(self):
 
