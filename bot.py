@@ -21,11 +21,11 @@ def main(argv):
             sys.exit()
         elif opt in ("-m", "--mode"):
             if (arg == "backtest"):
-                backTest = arg
+                mode = arg
             elif (arg == "paper"):
-                backTest = arg
+                mode = arg
             elif (arg == "live"):
-                backTest = arg
+                mode = arg
             else:
                 print("Requires mode to be 'backtest', 'paper' or 'live'")
                 sys.exit(2)
@@ -47,7 +47,7 @@ def main(argv):
     #modes = ["RSI"]
     #modes = ["BBAND"]
     #modes = ["BBAND", "MACD2", "ALL"]
-    modes = ["MACD2"]
+    algos = ["MACD"]
     #modes = ["RSI", "BBAND", "MACD2", "MACD", "DROP", "ALL"]
 
     charts = []
@@ -58,15 +58,22 @@ def main(argv):
 
     for pair in pairs:
         for exchange in exchanges:
-            charts.append(BotChart(exchange, pair, period, backTest, output))
-            for mode in modes:
-                strategies.append(BotStrategy(exchange + "-" + pair, mode, pair, 1, 5000, 0, int(5000 - 1), stoploss, target, backTest, output))
-                        # Parameters: max trades, initial fiat, initial holding, trade amount, stop loss, target
+            if (mode == "backtest"):
+                charts.append(BotChart(exchange, pair, period, mode, output))
+            else:
+                charts.append(BotChart(exchange, pair, period, "warm", output, int(time.time() - (24*60*60)), int(time.time())))
 
-    if (backTest == "backtest"):
+            for algo in algos:
+                if (mode == "backtest"):
+                    strategies.append(BotStrategy(exchange + "-" + pair, algo, pair, 1, 5000, 0, int(5000 - 1), stoploss, target, mode, output))
+                            # Parameters: max trades, initial fiat, initial holding, trade amount, stop loss, target
+                else:
+                    strategies.append(BotStrategy(exchange + "-" + pair, algo, pair, 1, 5000, 0, int(5000 - 1), stoploss, target, "warm", output))
+
+    if (mode == "backtest"):
         for i, chart in enumerate(charts):
-            for j, mode in enumerate(modes):
-                strategy = strategies[len(modes) * i + j]
+            for j, algo in enumerate(algos):
+                strategy = strategies[len(algos) * i + j]
                 for candlestick in chart.getPoints():
                     strategy.tick(candlestick)
 
@@ -79,9 +86,17 @@ def main(argv):
         developingCandlestick = BotCandlestick(output, int(time.time()), period)
 
         for i, chart in enumerate(charts):
-            for j, mode in enumerate(modes):
+            for j, algo in enumerate(algos):
+
+                strategy = strategies[len(algos) * i + j]
+
+                for candlestick in chart.getPoints():
+                    strategy.tick(candlestick)
+
+                strategy.drawGraph()
+                strategy.backtest = mode
+
                 while True:
-                    strategy = strategies[len(modes) * i + j]
                     try:
                         developingCandlestick.tick(chart.getCurrentPrice())
                     except urllib.error.URLError:

@@ -1,3 +1,7 @@
 
 config.ini
 .idea/workspace.xml
+.idea/workspace.xml
+__pycache__/botchart.cpython-36.pyc
+__pycache__/botlog.cpython-36.pyc
+__pycache__/botstrategy.cpython-36.pyc

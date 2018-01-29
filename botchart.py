@@ -5,25 +5,22 @@ from botcandlestick import BotCandlestick
 
 class BotChart(object):
 
-	def __init__(self, exchange, pair, period, backtest, output):
-
+	def __init__(self, exchange, pair, period, backtest, output, startTime=1483228800, endTime=1514764800):
 		self.exchange = exchange
 		self.pair = pair
 		self.period = period
 
-		#http://poloniex.com/public?command=returnChartData&currencyPair=USDT_BTC&start=1483228800&end=1514764800&period=300
-
-		self.startTime = 1483228800 # 01 JAN 2017
+		self.startTime = startTime # 01 JAN 2017
 		#self.startTime = 1504224000 # 01 SEP 2017
 		#self.endTime = 1506729600 # 30 SEP 2017
-		self.endTime = 1514764800 # 1 Jan 2018
+		self.endTime = endTime # 1 Jan 2018
 
 		self.data = []
 
 		if (self.exchange == "poloniex"):
 			self.conn = poloniex('key goes here', 'Secret goes here')
 
-			if backtest == "backtest":
+			if backtest in ["backtest", "warm"]:
 				data = self.conn.api_query("returnChartData", {"currencyPair": self.pair, "start": self.startTime, "end": self.endTime, "period": self.period})
 				#data = json.loads(open("./data/btc-usd-data.json", "r").readline())
 

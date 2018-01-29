@@ -17,7 +17,7 @@ class BotLog(object):
 
 		self.output.close()
 
-	def drawGraph(self, graphPoints, balancePoints, MACDPoints, RSIPoints, name, mode):
+	def drawGraph(self, graphPoints, balancePoints, MACDPoints, name, mode):
 
 		self.outputGraph = open(os.path.expanduser("../web/bot/" + name + "-" + mode + "-Graph.html"), 'w')
 
@@ -39,18 +39,18 @@ function drawDashboard() {
 	data.addColumn({type: 'string', role:'annotationText'});
 	data.addColumn('number', 'MACD Diff');
 	data.addColumn('number', 'MACD Signal');
-	data.addColumn('number', 'RSI');
-	data.addColumn('number', 'RSI High');
-	data.addColumn('number', 'RSI Low');
+	// data.addColumn('number', 'RSI');
+	// data.addColumn('number', 'RSI High');
+	// data.addColumn('number', 'RSI Low');
 	data.addColumn('number', 'Balance');
 	data.addColumn('number', 'Balance No Trade');
 	data.addRows([""")
 
-		for point in zip(graphPoints, MACDPoints, RSIPoints, balancePoints):
+		for point in zip(graphPoints, MACDPoints, balancePoints):
 			self.outputGraph.write("[new Date(" + point[0]['date'] +  ")," + point[0]['upperbb'] + "," + point[0]['lowerbb'] + "," + point[0]['price'] + "," + point[0]['action']  + "," + point[0]['description'] + ",")
 			self.outputGraph.write(point[1]['MACDDiff'] + "," + point[1]['MACDSignal'] + ",")
-			self.outputGraph.write(point[2]['RSI'] + "," + point[2]['RSIHIGH'] + "," + point[2]['RSILOW'] + ",")
-			self.outputGraph.write(point[3]['balance'] + "," + point[3]['balanceNoTrade'] + "],\n")
+			#self.outputGraph.write(point[2]['RSI'] + "," + point[2]['RSIHIGH'] + "," + point[2]['RSILOW'] + ",")
+			self.outputGraph.write(point[2]['balance'] + "," + point[2]['balanceNoTrade'] + "],\n")
 
 		self.outputGraph.write("""]);
 
@@ -81,18 +81,6 @@ function drawDashboard() {
 		view: {'columns': [0, 6, 7]}
       });
       
-    // Create a line chart, passing some options
-   	var chart3 = new google.visualization.ChartWrapper({
-        chartType: 'LineChart',
-        containerId: 'chart3_div',
-        options : {
-			height: 400,
-			title: 'RSI Chart',
-			legend: { position: 'bottom' }, 
-		},
-		view: {'columns': [0, 8, 9, 10]}
-      });
-      
 	// Create a line chart, passing some options
    	var chart4 = new google.visualization.ChartWrapper({
         chartType: 'LineChart',
@@ -102,7 +90,7 @@ function drawDashboard() {
 			title: 'Balance Chart',
 			legend: { position: 'bottom' }, 
 		},
-		view: {'columns': [0, 11, 12]}
+		view: {'columns': [0, 8, 9]}
       });
       
     // Create a range slider, passing some options
@@ -128,7 +116,7 @@ function drawDashboard() {
 	// given the chosen slider range.
 	dashboard.bind(control, chart1);
 	dashboard.bind(control, chart2);
-	dashboard.bind(control, chart3);
+	// dashboard.bind(control, chart3);
 	dashboard.bind(control, chart4);
 
 	// Draw the dashboard.
@@ -142,7 +130,6 @@ function drawDashboard() {
       		<div id="control_div"></div>
       		<div id="chart1_div"></div>
       		<div id="chart2_div"></div>
-      		<div id="chart3_div"></div>
       		<div id="chart4_div"></div>
     	</div>
 	</body>

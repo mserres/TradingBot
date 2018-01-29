@@ -1,6 +1,5 @@
 import time
 
-from botlog import BotLog
 from botindicators import BotIndicators
 from bottrade import BotTrade
 
@@ -73,11 +72,12 @@ class BotStrategy(object):
 		self.MACDDiff.append(currentMACDDiff)
 		self.MACDSignal.append(currentMACDSignal)
 
-		self.rsi.append(self.indicators.RSI(self.prices[-30:]))
+		# self.rsi.append(self.indicators.RSI(self.prices[-30:]))
 
-		self.evaluatePositions()
+		if self.backtest in ["backtest", "paper", "live"]:
+			self.evaluatePositions()
 
-		if self.backtest == "backtest":
+		if self.backtest in ["backtest", "warm"]:
 			tickdate = candlestick.date
 			self.date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(tickdate))
 		else:
@@ -87,7 +87,7 @@ class BotStrategy(object):
 		self.dataPoints.append({'date': str(tickdate * 1000), 'price': str(self.currentPrice), 'upperbb': str(currentUpperBBand), 'lowerbb': str(currentLowerBBand), 'action': 'null', 'description': 'null'})
 		self.balancePoints.append({'date': str(tickdate * 1000), 'balance': str(self.balance), 'balanceNoTrade': str(self.balanceNoTrade)})
 		self.MACDPoints.append({'date': str(tickdate * 1000), 'MACDDiff': str(self.MACDDiff[-1]), 'MACDSignal': str(self.MACDSignal[-1])})
-		self.rsiPoints.append({'date': str(tickdate * 1000), 'RSI': str(self.rsi[-1]), 'RSIHIGH': str(70), 'RSILOW': str(30)})
+		# self.rsiPoints.append({'date': str(tickdate * 1000), 'RSI': str(self.rsi[-1]), 'RSIHIGH': str(70), 'RSILOW': str(30)})
 
 		if len(self.action) > 0:
 			self.dataPoints[-1]['action'] = "'*'"
@@ -126,7 +126,7 @@ class BotStrategy(object):
 				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
 				self.action.append('Open BBAND, Amount='+ str(self.tradeAmount) + ', Price=' + str(self.currentPrice))
 
-			elif self.mode in ["RSI", "ALL"] and self.rsi[-1] < 30 and self.rsi[-2] > 30:
+			elif self.mode in ["RSI"] and self.rsi[-1] < 30 and self.rsi[-2] > 30:
 
 				self.trades.append(BotTrade(self.date, "RSI", self.pair, self.currentPrice, self.tradeAmount, self.stopLoss, self.targetPrice, self.backtest, self.output))
 				self.updateBalance(self.tradeAmount / self.currentPrice, self.currentPrice)
@@ -147,13 +147,13 @@ class BotStrategy(object):
 				self.updateBalance(-trade.quantity, self.currentPrice)
 				self.action.append('Close STOPLOSS=' + str(self.currentPrice))
 
-			if trade.type in ["MACD"] and self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2] and self.currentPrice > trade.targetPrice:
-				
+			elif trade.type in ["MACD"] and ((self.MACDDiff[-2] > 0 and self.MACDDiff[-1] < 0) or (self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2])) and self.currentPrice > trade.targetPrice:
+
 				trade.close(self.date, self.currentPrice, "MACD")
 				self.updateBalance(-trade.quantity, self.currentPrice)
 				self.action.append('CLOSE MACD=' + str(self.currentPrice))
 
-			elif trade.type in ["MACD2"] and ((self.MACDDiff[-2] > 0 and self.MACDDiff[-1] < 0) or (self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2])) and self.currentPrice > trade.targetPrice:
+			elif trade.type in ["MACD2"] and self.MACDDiff[-1] > self.MACDSignal[-1] and self.MACDDiff[-2] < self.MACDSignal[-2] and self.currentPrice > trade.targetPrice:
 
 				trade.close(self.date, self.currentPrice, "MACD2")
 				self.updateBalance(-trade.quantity, self.currentPrice)
@@ -210,9 +210,9 @@ class BotStrategy(object):
 		tradesLossesNumber = sum(1 for i in self.trades if i.profit < 0 and i.status == "CLOSED")
 		tradesLossesAmount = sum(i.profit for i in self.trades if i.profit < 0 and i.status == "CLOSED")
 
-		self.output.log("\nSummary for " + self.name + ", Target / StopLoss " + str(self.targetPrice) + " / " + str(self.stopLoss) + ",  with " + self.mode + " Start with: " + str(self.startUnit) + " unit(s) and " + str(self.startUSD) + " USD")
+		self.output.log("\nSummary for " + self.name + ", Target / StopLoss " + str(self.targetPrice) + " / " + str(self.stopLoss) + ", with " + self.mode + " Start with: " + str(self.startUnit) + " unit(s) and " + str(self.startUSD) + " USD")
 		self.output.log("Hold: End valuation: " + str(self.balanceNoTrade) + " Units: " + str(self.startUnit) + " USD: " + str(self.startUSD) + " Price: " + str(self.currentPrice))
-		self.output.log("Trade: End valuation: " + str(self.balance) + " Units: " + str(self.holdingsUnits) + " USD: " + str(self.holdingsUSD) + ". Price: " + str(self.currentPrice))
+		self.output.log("Trade: End valuation: " + str(self.balance) + " Units: " + str(self.holdingsUnits) + " USD: " + str(self.holdingsUSD) + ". Price: " + str(self.currentPrice) + "\n")
 
 		if tradesClosed > 0:
 			self.output.log("Profit inc Fees: " + str(self.profit) + ", Fees: " + str(self.fees) + ", " + str(len(self.trades)) + " Trades with " + str(tradesOpened) + " still open\n")
@@ -227,4 +227,4 @@ class BotStrategy(object):
 		self.balanceNoTrade = self.startUSD + (self.startUnit * price)
 
 	def drawGraph(self):
-		self.output.drawGraph(self.dataPoints, self.balancePoints, self.MACDPoints, self.rsiPoints, self.name, self.mode)
+		self.output.drawGraph(self.dataPoints, self.balancePoints, self.MACDPoints, self.name, self.mode)
